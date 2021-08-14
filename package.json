@@ -1,0 +1,33 @@
+{
+  "name": "nork",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "bin": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "keywords": [
+    "node",
+    "framework",
+    "express",
+    "mvc"
+  ],
+  "author": "Filip Rojek",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^8.1.0",
+    "inquirer": "^8.1.2",
+    "leven": "^4.0.0",
+    "pad": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filiprojek/node-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/filiprojek/node-framework/issues"
+  },
+  "homepage": "https://github.com/filiprojek/node-framework/blob/master/README.md"
+}
