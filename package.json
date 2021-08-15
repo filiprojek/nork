@@ -1,7 +1,7 @@
 {
   "name": "nork",
   "version": "1.0.0",
-  "description": "",
+  "description": "The best node.js 'framework' :)",
   "main": "src/app.js",
   "bin": "src/app.js",
   "scripts": {
@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/filiprojek/node-framework.git"
+    "url": "git+https://github.com/filiprojek/nork.git"
   },
   "bugs": {
-    "url": "https://github.com/filiprojek/node-framework/issues"
+    "url": "https://github.com/filiprojek/nork/issues"
   },
-  "homepage": "https://github.com/filiprojek/node-framework/blob/master/README.md"
+  "homepage": "https://github.com/filiprojek/nork/blob/master/README.md"
 }
