@@ -1,21 +1,37 @@
-# Simple node.js framework that extends express
+# Nork
+Simple node.js tool that extends express projects.
+
+ - [About](#about)
+ - [Installation](#installation)
+ - [How to use](#how-to-use)
 
 ## About
-- The point of this framework is to add into express some feel of php framework Laravel.
-- Primarily get simply express app into MVC architecture
+The point of this tool is to add into express some feel of php framework Laravel. Primarily get simply express app into MVC architecture
 
 ## Installation
-- tutorial coming soon! :)
-
+```
+npm install -g nork
+```
+Tohle nainstaluje nork globálně. Pokud byste chtěli nainstalovat nork pouze pro jeden projekt, je možné ho nainstalovat i lokálně. 
+ Pro lokální instalaci:
+ ```
+ npm install nork
+```
 ## How to use
-- coming soon!
+```
+Usage: nork <command> [options]
 
-### Artisan
-- The key tool of this framework is artisan
-- with that tool you can easily make view, model, controller etc. with prepared lines of code that  you will have to write manually, if you didn't use some tool like this. We are programmers, we are lazy to do manual stuff :).
+Options:
+  -v, --version                          output the version number
+  -h, --help                             output usage information
 
-#### make
-- make is the keyword that you will use with this framework a lot.
-- make is for creating new components of your project.
-- to create a view, model, controller, test or routes: `node artisan make:something`
-- for example, to make an controller, you will write: `node artisan make:controller`
+Commands:
+  create [app-name]                      create a new project
+  make:controller                        create a new controller
+  make:middleware                        create a new middleware
+  make:model                             create a new model
+  make:route                             create a new route
+  make:test                              create a new test
+  make:view                              create a new view
+  setup                                  set up an existing project for nork
+```
