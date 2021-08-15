@@ -63,7 +63,7 @@ const logHelp = (specific = false, command = false) => {
 	console.log(pad('  make:route', spc), 'create a new route')
 	console.log(pad('  make:test', spc), 'create a new test')
 	console.log(pad('  make:view', spc), 'create a new view')
-
+	console.log(pad('  setup', spc), 'set up an existing project for nork')
 	console.log()
 	console.log('  Run', colors.cyan('nork help <command>'), 'for detailed usage of given command.')
 
@@ -77,7 +77,6 @@ const logHelp = (specific = false, command = false) => {
 ;(async () => {
 	if (process.argv[2] == 'create') {
 		// get info about new project
-		const data = { lang: 'ts' }
 		const questions = [
 			{
 				type: 'input',
@@ -188,6 +187,22 @@ const logHelp = (specific = false, command = false) => {
 		}
 	}
 
+	if (process.argv[2] == 'setup') {
+		const questions = {
+			type: 'list',
+			message: "Pick the technology you're using:",
+			name: 'lang',
+			choices: [
+				{ name: 'Typescript', value: 'ts' },
+				{ name: 'Javascript', value: 'js' },
+			],
+		}
+		let answers = await inquirer.prompt(questions)
+
+		fs.writeJsonSync(path.join(process.cwd(), './norkconfig.json'), answers)
+		return logSuccess()
+	}
+
 	if (process.argv[2] == '-v' || process.argv[2] == '--version') {
 		const pkgJson = require(path.join(__dirname, '../package.json'))
 		return console.log('nork', pkgJson.version)
@@ -200,7 +215,6 @@ const logHelp = (specific = false, command = false) => {
 		return logHelp()
 	}
 
-	
 	process.argv.splice(0, 2)
 	logHelp(false, process.argv.join(' '))
 })()
