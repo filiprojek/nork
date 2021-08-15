@@ -21,16 +21,16 @@ This will install nork globally. If you would like to install nork for only one 
 Usage: nork <command> [options]
 
 Options:
-  -v, --version                     output the version number
-  -h, --help                        output usage information
+  -v, --version                  output the version number
+  -h, --help                     output usage information
 
 Commands:
-  create [app-name]                 create a new project
-  make:controller                   create a new controller
-  make:middleware                   create a new middleware
-  make:model                        create a new model
-  make:route                        create a new route
-  make:test                         create a new test
-  make:view                         create a new view
-  setup                             set up an existing project for nork
+  create [app-name]              create a new project
+  make:controller                create a new controller
+  make:middleware                create a new middleware
+  make:model                     create a new model
+  make:route                     create a new route
+  make:test                      create a new test
+  make:view                      create a new view
+  setup                          set up an existing project for nork
 ```
