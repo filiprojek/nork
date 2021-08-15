@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express'
 
 const root_get = (req: Request, res: Response) => {
-  res.render("home");
-  return true;
-};
+	res.render('home')
+	return true
+}
 
 module.exports = {
-  root_get,
-};
+	root_get,
+}

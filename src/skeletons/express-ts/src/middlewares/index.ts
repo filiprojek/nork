@@ -1,8 +1,8 @@
-import { Router } from "express";
-const sayHiMiddleware = require("./sayHiMiddleware");
+import { Router } from 'express'
+const sayHiMiddleware = require('./sayHiMiddleware')
 
-const router = Router();
+const router = Router()
 
-router.use(sayHiMiddleware);
+router.use(sayHiMiddleware)
 
-module.exports = router;
+module.exports = router

@@ -1,11 +1,11 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Router, Request, Response, NextFunction } from 'express'
 
-const router = Router();
+const router = Router()
 
 router.use((req: Request, res: Response, next: NextFunction) => {
-  console.log("Hi :)");
+	console.log('Hi :)')
 
-  next();
-});
+	next()
+})
 
-module.exports = router;
+module.exports = router
