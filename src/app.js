@@ -77,6 +77,7 @@ const logHelp = (specific = false, command = false) => {
 ;(async () => {
 	if (process.argv[2] == 'create') {
 		// get info about new project
+		const data = {}
 		const questions = [
 			{
 				type: 'input',
