@@ -26,11 +26,11 @@ Options:
 
 Commands:
   create [app-name]              create a new project
-  make:controller                create a new controller
-  make:middleware                create a new middleware
-  make:model                     create a new model
-  make:route                     create a new route
-  make:test                      create a new test
-  make:view                      create a new view
+  make controller [name]         create a new controller
+  make middleware [name]         create a new middleware
+  make model [name]              create a new model
+  make rout [name]               create a new route
+  make test [name]               create a new test
+  make view [name]               create a new view
   setup                          set up an existing project for nork
 ```
