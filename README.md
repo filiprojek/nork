@@ -29,7 +29,7 @@ Commands:
   make controller [name]         create a new controller
   make middleware [name]         create a new middleware
   make model [name]              create a new model
-  make rout [name]               create a new route
+  make route [name]              create a new route
   make test [name]               create a new test
   make view [name]               create a new view
   setup                          set up an existing project for nork
