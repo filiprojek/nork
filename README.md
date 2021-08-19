@@ -26,7 +26,7 @@ Options:
 
 Commands:
   create [app-name]              create a new project
-	create [app-name] -i           create a new project in current directory
+  create [app-name] -i           create a new project in current directory
   make controller [name]         create a new controller
   make middleware [name]         create a new middleware
   make model [name]              create a new model
