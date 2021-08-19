@@ -30,7 +30,7 @@ const logSuccess = (msg = false) => {
 }
 
 const logHelp = (specific = false, command = false) => {
-	let spc = 40
+	let spc = 27
 
 	if (specific) {
 		// log specific help
@@ -57,6 +57,7 @@ const logHelp = (specific = false, command = false) => {
 	console.log()
 	console.log('Commands:')
 	console.log(pad('  create [app-name]', spc), 'create a new project')
+	console.log(pad('  create [app-name] -i', spc), 'create a new project in current directory')
 	console.log(pad('  make controller [name]', spc), 'create a new controller')
 	console.log(pad('  make middleware [name]', spc), 'create a new middleware')
 	console.log(pad('  make model [name]', spc), 'create a new model')
@@ -77,6 +78,7 @@ const logHelp = (specific = false, command = false) => {
 ;(async () => {
 	if (process.argv[2] == 'create') {
 		// get info about new project
+		let projectPath
 		const data = {}
 		const questions = [
 			{
@@ -110,15 +112,16 @@ const logHelp = (specific = false, command = false) => {
 		data.author = answers.author
 
 		// copy skeleton to new project
-		fs.copySync(path.join(__dirname, './skeletons/express-' + data.lang), process.cwd())
+		process.argv.includes('-i') ? projectPath = process.cwd() : projectPath = path.join(process.cwd(), data.project_name)
+		fs.copySync(path.join(__dirname, './skeletons/express-' + data.lang), projectPath)
 
 		// edit package.json file
-		const pkgJson = require(path.join(process.cwd(), 'package.json'))
+		const pkgJson = require(path.join(projectPath, 'package.json'))
 
 		pkgJson.name = data.project_name
 		pkgJson.author = data.author
 
-		fs.writeFile(path.join(process.cwd(), 'package.json'), JSON.stringify(pkgJson, null, 2), err => {
+		fs.writeFile(path.join(projectPath, 'package.json'), JSON.stringify(pkgJson, null, 2), err => {
 			if (err) return logError(err)
 		})
 
