@@ -59,9 +59,11 @@ const logHelp = (specific = false, command = false) => {
 	console.log(pad('  create [app-name]', spc), 'create a new project')
 	console.log(pad('  create [app-name] -i', spc), 'create a new project in current directory')
 	console.log(pad('  make controller [name]', spc), 'create a new controller')
+	console.log(pad('  make interface [name]', spc), 'create a new interface')
 	console.log(pad('  make middleware [name]', spc), 'create a new middleware')
 	console.log(pad('  make model [name]', spc), 'create a new model')
 	console.log(pad('  make route [name]', spc), 'create a new route')
+	console.log(pad('  make service [name]', spc), 'create a new service')
 	console.log(pad('  make test [name]', spc), 'create a new test')
 	console.log(pad('  make view [name]', spc), 'create a new view')
 	console.log(pad('  setup', spc), 'set up an existing project for nork')
@@ -112,7 +114,7 @@ const logHelp = (specific = false, command = false) => {
 		data.author = answers.author
 
 		// copy skeleton to new project
-		process.argv.includes('-i') ? projectPath = process.cwd() : projectPath = path.join(process.cwd(), data.project_name)
+		process.argv.includes('-i') ? (projectPath = process.cwd()) : (projectPath = path.join(process.cwd(), data.project_name))
 		fs.copySync(path.join(__dirname, './skeletons/express-' + data.lang), projectPath)
 
 		// edit package.json file
@@ -140,7 +142,7 @@ const logHelp = (specific = false, command = false) => {
 		const component = process.argv[3]
 		const norkcfg = require(path.join(process.cwd(), 'norkconfig.json'))
 
-		let tsComponents = ['controller', 'middleware', 'route']
+		let tsComponents = ['controller', 'middleware', 'route', 'service']
 
 		if (tsComponents.includes(component)) {
 			let src = path.join(__dirname, './make-files/express-' + norkcfg.lang + '/' + component + '.' + norkcfg.lang)
@@ -181,6 +183,17 @@ const logHelp = (specific = false, command = false) => {
 		if (component == 'test') {
 			let src = path.join(__dirname, './make-files/express-' + norkcfg.lang + '/' + component + '.js')
 			let dest = path.join(process.cwd(), './src/' + component + 's' + '/' + process.argv[4] + '.test.js')
+
+			try {
+				fs.copySync(src, dest, { overwrite: false, errorOnExist: true })
+			} catch (err) {
+				return logError(err.message)
+			}
+			return logSuccess()
+		}
+		if (component == 'interface') {
+			let src = path.join(__dirname, './make-files/express-' + norkcfg.lang + '/' + component + '.ts')
+			let dest = path.join(process.cwd(), './src/' + component + 's' + '/' + process.argv[4] + '.ts')
 
 			try {
 				fs.copySync(src, dest, { overwrite: false, errorOnExist: true })

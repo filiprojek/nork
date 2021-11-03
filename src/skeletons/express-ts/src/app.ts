@@ -1,43 +1,36 @@
 import express from 'express'
 import morgan from 'morgan'
-import mongoose from 'mongoose'
 import path from 'path'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import { router as routes } from '@/routes'
+import { router as middlewares } from '@/middlewares'
 
-const config = require('./utils/environment')
-const routes = require('./routes')
-const middlewares = require('./middlewares')
+const corsWhitelist = ['http://localhost:8080', 'http://localhost:6060']
+const corsOptions = {
+	origin: function (origin: any, callback: any) {
+		if (!origin || corsWhitelist.indexOf(origin) !== -1) {
+			callback(null, true)
+		} else {
+			callback(new Error('Not allowed by CORS'))
+		}
+	},
+	optionsSuccessStatus: 200,
+	credentials: true,
+}
 
-const port: Number = config.APP_PORT || 8080
-const app = express()
-
-// MongoDB
-const dbURI: string = config.DB_URI
-mongoose
-	.connect(dbURI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-	})
-	.then(result => {
-		console.log('connected to db')
-		app.listen(port, () => {
-			console.log(`Server is listening on http://localhost:${port}`)
-		})
-	})
-	.catch(err => {
-		console.log(err)
-	})
+export const app = express()
 
 // Middlewares
 app.use(middlewares)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(cookieParser())
 
 // Routes
 app.use(routes)

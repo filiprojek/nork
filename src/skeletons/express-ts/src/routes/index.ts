@@ -1,13 +1,11 @@
-import { Router } from 'express'
-const rootRoutes = require('./rootRoutes')
+import { Request, Response, Router } from 'express'
+import { router as rootRoutes } from './rootRoutes'
 
-const router = Router()
+export const router = Router()
 
 router.use(rootRoutes)
 
 // 404
-router.use((req, res) => {
+router.use((req: Request, res: Response) => {
 	res.status(404).send('E404')
 })
-
-module.exports = router

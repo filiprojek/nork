@@ -1,8 +1,6 @@
 import { Router } from 'express'
-const sayHiMiddleware = require('./sayHiMiddleware')
+import { router as sayHiMiddleware } from '@/middlewares/sayHiMiddleware'
 
-const router = Router()
+export const router = Router()
 
 router.use(sayHiMiddleware)
-
-module.exports = router
