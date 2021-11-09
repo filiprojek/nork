@@ -157,8 +157,8 @@ const logHelp = (specific = false, command = false) => {
 		}
 
 		if (component == 'model') {
-			let src = path.join(__dirname, './make-files/express-' + norkcfg.lang + '/' + component + '.js')
-			let dest = path.join(process.cwd(), './src/' + component + 's' + '/' + process.argv[4] + '.js')
+			let src = path.join(__dirname, './make-files/express-' + norkcfg.lang + '/' + component + '.' + norkcfg.lang)
+			let dest = path.join(process.cwd(), './src/' + component + 's' + '/' + process.argv[4] + '.' + norkcfg.lang)
 
 			try {
 				fs.copySync(src, dest, { overwrite: false, errorOnExist: true })
