@@ -106,4 +106,4 @@ dist
 # package lock file
 package-lock.json
 
-_old/*
+_old/
