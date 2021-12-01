@@ -1,0 +1,20 @@
+import { assert } from 'chai'
+import { App } from '../app'
+
+// Describe tests
+describe('some demo tests', () => {
+	// Create tests
+	it('adds two number together', () => {
+		assert(2 + 3 === 5)
+	})
+
+	it('should return Hello plus my name', () => {
+		assert.equal(App.sayHello('Filip'), 'Hello Filip')
+		assert.notEqual(App.sayHello('Adam'), 'Hello Filip')
+	})
+
+	it('should return Hello plus my name within instance', () => {
+		const app = new App('Filip')
+		assert.equal(app.pozdrav(), 'Hello Filip')
+	})
+})

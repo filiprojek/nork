@@ -1,0 +1,32 @@
+{
+    "name": "nork",
+    "version": "1.2.1",
+    "description": "The best node.js 'framework' :)",
+    "main": "src/app.js",
+    "bin": "src/app.js",
+    "scripts": {
+        "start": "node src/app.js"
+    },
+    "keywords": [
+        "node",
+        "framework",
+        "express",
+        "mvc"
+    ],
+    "author": "Filip Rojek",
+    "license": "MIT",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "fs-extra": "^10.0.0",
+        "inquirer": "^8.1.2",
+        "pad": "^3.2.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/filiprojek/nork.git"
+    },
+    "bugs": {
+        "url": "https://github.com/filiprojek/nork/issues"
+    },
+    "homepage": "https://github.com/filiprojek/nork/blob/master/README.md"
+}
