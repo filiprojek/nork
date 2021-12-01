@@ -107,3 +107,5 @@ dist
 package-lock.json
 
 _old/
+undefined.ts
+undefined.ejs
