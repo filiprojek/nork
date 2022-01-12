@@ -1,6 +1,6 @@
 {
     "name": "nork",
-    "version": "2.0.0.1",
+    "version": "3.0.0",
     "description": "The best node.js 'framework' :)",
     "main": "dist/app.js",
     "bin": "dist/app.js",

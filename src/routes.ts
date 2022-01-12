@@ -2,6 +2,7 @@ import Help from './help'
 import Version from './version'
 import Setup from './setup'
 import Make from './make'
+import Create from './create'
 
 export default class Routes {
 	static router(): string {
@@ -33,6 +34,13 @@ export default class Routes {
 				}
 				return `make ${process.argv[3]}`
 			}
+		}
+
+		if (process.argv[2] == 'create') {
+			if (process.argv[4] != 'test') {
+				Create.project(process.argv[3])
+			}
+			return `create ${process.argv[3]}`
 		}
 
 		console.log(Help.logHelp())

@@ -56,3 +56,13 @@ describe('should return make', () => {
 		})
 	}
 })
+
+describe('should return create', () => {
+	it('return create testProject', () => {
+		process.argv[2] = 'create'
+		process.argv[3] = 'testProject'
+		process.argv[4] = 'test'
+		const routes = Routes.router()
+		assert.equal(routes, 'create testProject')
+	})
+})

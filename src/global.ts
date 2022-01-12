@@ -13,4 +13,15 @@ export default class Global {
 		console.log(colors.bgYellow.red(errorMsg))
 		return
 	}
+
+	static langToLanguage(lang: string): string {
+		switch (lang) {
+			case 'js':
+				return 'Javascript'
+			case 'ts':
+				return 'Typescript'
+			default:
+				return 'Unknown language'
+		}
+	}
 }
