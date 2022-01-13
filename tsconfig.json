@@ -9,8 +9,13 @@
     "esModuleInterop": true,                          /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
     "skipLibCheck": true,                             /* Skip type checking all .d.ts files. */
     "forceConsistentCasingInFileNames": true,         /* Ensure that casing is correct in imports. */
+    "declaration": true,
   },
   "exclude": [
-    "_old"
+    "_old",
+    "node_modules",
+    "src/make-files",
+    "src/skeletons",
+    "src/tests"
   ]
 }

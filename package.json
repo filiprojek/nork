@@ -1,15 +1,17 @@
 {
     "name": "nork",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "The best node.js 'framework' :)",
     "main": "dist/app.js",
     "bin": "dist/app.js",
+    "types": "dist/app.d.ts",
     "scripts": {
         "start": "npm run start:prod",
         "start:dev": "ts-node src/app.ts",
         "start:prod": "node dist/app.js",
         "build": "rimraf dist && tsc -p .",
-        "test": "mocha --config .mocharc.json --watch src/**/*.test.ts"
+        "test": "mocha --config .mocharc.json --watch src/**/*.test.ts",
+        "prepublish": "rimraf dist && tsc -p ."
     },
     "keywords": [
         "node",
