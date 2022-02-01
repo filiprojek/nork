@@ -16,6 +16,8 @@
     "node_modules",
     "src/make-files",
     "src/skeletons",
-    "src/tests"
+    "src/tests",
+    "src/interfaces",
+    "src/utils"
   ]
 }
