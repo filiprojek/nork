@@ -1,24 +1,24 @@
-import mongoose from 'mongoose'
+import http from 'http'
 import { app } from '@/app'
 import config from '@/utils/environment'
-import { Err, Succ } from '@/services/globalService'
+import { Succ } from '@/services/globalService'
+import database from '@/config/database'
+const port: number = config.APP_PORT || 8080
+const hostname: string = config.APP_HOSTNAME || 'localhost'
+const server = http.createServer(app)
 
-const port: Number = config.APP_PORT || 8080
+// Server
+export function runServer(): void {
+	server.listen(port, hostname, () => {
+		new Succ(200, `Server is listening on http://localhost:${port}`)
+	})
+}
 
-// MongoDB
-const dbURI: string = config.DB_URI
-mongoose
-	.connect(dbURI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-	})
-	.then(() => {
-		new Succ(200, 'connected to db')
-		app.listen(port, () => {
-			new Succ(200, `Server is listening on http://localhost:${port}`)
-		})
-	})
-	.catch((err: any) => {
-		new Err(500, err)
-	})
+if (!config.NORK.db) {
+	runServer()
+} else {
+	const db_connection = database()
+	if (db_connection) {
+		runServer()
+	}
+}

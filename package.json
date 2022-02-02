@@ -1,6 +1,6 @@
 {
     "name": "nork",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "description": "The best node.js 'framework' :)",
     "main": "dist/app.js",
     "bin": "dist/app.js",
@@ -25,7 +25,7 @@
     "author": "Filip Rojek",
     "license": "MIT",
     "dependencies": {
-        "colors": "^1.4.0",
+        "colors":"1.4.0",
         "fs-extra": "^10.0.0",
         "inquirer": "^8.1.2",
         "pad": "^3.2.0"
