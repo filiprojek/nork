@@ -15,13 +15,13 @@ const app = express()
 const dbURI = process.env.DB_URI
 mongoose
 	.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-	.then(result => {
+	.then((result) => {
 		console.log('connected to db')
 		app.listen(port, () => {
 			console.log(`server is running on http://localhost:${port}`)
 		})
 	})
-	.catch(err => {
+	.catch((err) => {
 		console.log(err)
 	})
 

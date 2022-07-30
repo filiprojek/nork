@@ -4,12 +4,12 @@ const modelSchema = new Schema<any>(
 	{
 		title: {
 			type: String,
-			required: true,
-		},
+			required: true
+		}
 	},
 	{
-		timestamps: true,
-	},
+		timestamps: true
+	}
 )
 
 export default model('ModelName', modelSchema)

@@ -14,7 +14,7 @@ export default class Create {
 			{
 				type: 'input',
 				name: 'project_name',
-				message: 'Enter project name:',
+				message: 'Enter project name:'
 			},
 			{
 				type: 'list',
@@ -22,8 +22,8 @@ export default class Create {
 				name: 'lang',
 				choices: [
 					{ name: 'Typescript', value: 'ts' },
-					{ name: 'Javascript - DEPRECATED', value: 'js' },
-				],
+					{ name: 'Javascript - DEPRECATED', value: 'js' }
+				]
 			},
 			{
 				type: 'list',
@@ -32,24 +32,24 @@ export default class Create {
 				choices: [
 					{ name: 'MongoDB - Mongoose', value: { db: 'mongodb', orm: 'mongoose' } },
 					{ name: 'MySQL - Sequelize', value: { db: 'mysql', orm: 'sequelize' } },
-					{ name: 'PostgreSQL - Sequelize', value: { db: 'postgresql', orm: 'sequelize' } },
-				],
+					{ name: 'PostgreSQL - Sequelize', value: { db: 'postgresql', orm: 'sequelize' } }
+				]
 			},
 			{
 				type: 'input',
 				name: 'author',
-				message: 'Enter your name:',
+				message: 'Enter your name:'
 			},
 			{
 				type: 'input',
 				name: 'email',
-				message: 'Enter your email:',
+				message: 'Enter your email:'
 			},
 			{
 				type: 'input',
 				name: 'website',
-				message: 'Enter your website:',
-			},
+				message: 'Enter your website:'
+			}
 		]
 		// remove first question if project name is already known
 		if (projectName) questions.shift()
@@ -61,7 +61,7 @@ export default class Create {
 			author: answers.author,
 			database: answers.db,
 			website: answers.website,
-			email: answers.email,
+			email: answers.email
 		}
 
 		// copy skeleton to new project
@@ -76,7 +76,7 @@ export default class Create {
 		const pkgJson = fs.readJsonSync(path.join(projectPath, 'package.json'))
 		pkgJson.name = data.project_name
 		pkgJson.author = `${data.author} <${data.email}> (${data.website})`
-		fs.writeFile(path.join(projectPath, 'package.json'), JSON.stringify(pkgJson, null, 2), err => {
+		fs.writeFile(path.join(projectPath, 'package.json'), JSON.stringify(pkgJson, null, 2), (err) => {
 			if (err) return global.logError(err.message)
 		})
 

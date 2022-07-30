@@ -10,26 +10,26 @@ Instance.init(
 			type: DataTypes.UUID,
 			primaryKey: true,
 			allowNull: false,
-			unique: true,
+			unique: true
 		},
 		username: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			allowNull: false
 		},
 		password: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			allowNull: false
 		},
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			unique: true,
-		},
+			unique: true
+		}
 	},
 	{
 		sequelize: db,
-		tableName: path.basename(__filename).split('.')[0].toLowerCase(),
-	},
+		tableName: path.basename(__filename).split('.')[0].toLowerCase()
+	}
 )
 
 export default Instance

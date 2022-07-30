@@ -4,5 +4,5 @@ const root_get = (req, res) => {
 }
 
 module.exports = {
-	root_get,
+	root_get
 }

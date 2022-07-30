@@ -1,22 +1,29 @@
 # Nork
+
 Simple node.js tool that extends express projects.
 
- - [About](#about)
- - [Installation](#installation)
- - [How to use](#how-to-use)
+-   [About](#about)
+-   [Installation](#installation)
+-   [How to use](#how-to-use)
 
 ## About
+
 The point of this tool is to add to express some feeling of php framework Laravel. Primarily get simply express app into MVC architecture.
 
 ## Installation
+
 ```
 npm install -g nork
 ```
+
 This will install nork globally. If you would like to install nork for only one project, you can also install it locally. For local installation:
- ```
- npm install nork
+
 ```
+npm install nork
+```
+
 ## How to use
+
 ```
 Usage: nork <command> [options]
 

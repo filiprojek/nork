@@ -10,6 +10,6 @@ export interface Questions {
 		{
 			name: string
 			value: string
-		},
+		}
 	]
 }

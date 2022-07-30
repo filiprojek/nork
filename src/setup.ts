@@ -13,8 +13,8 @@ export default class Setup {
 				name: 'lang',
 				choices: [
 					{ name: 'Typescript', value: 'ts' },
-					{ name: 'Javascript', value: 'js' },
-				],
+					{ name: 'Javascript', value: 'js' }
+				]
 			}
 			const answers = await inquirer.prompt(Object(questions))
 			fs.writeJsonSync(path.join(process.cwd(), './norkconfig.json'), answers)

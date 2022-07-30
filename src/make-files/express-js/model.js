@@ -5,12 +5,12 @@ const modelSchema = new Schema(
 	{
 		title: {
 			type: String,
-			required: true,
-		},
+			required: true
+		}
 	},
 	{
-		timestamps: true,
-	},
+		timestamps: true
+	}
 )
 
 const ModelName = mongoose.model('ModelName', modelSchema)
