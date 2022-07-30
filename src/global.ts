@@ -24,4 +24,17 @@ export default class Global {
 				return 'Unknown language'
 		}
 	}
+
+	static dbToDatabase(lang: string): string {
+		switch (lang) {
+			case 'mongodb':
+				return 'MongoDB'
+			case 'postgresql':
+				return 'PostgreSQL'
+			case 'mysql':
+				return 'MySQL'
+			default:
+				return 'Unknown database'
+		}
+	}
 }
