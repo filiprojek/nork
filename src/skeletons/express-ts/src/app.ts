@@ -3,10 +3,16 @@ import morgan from 'morgan'
 import path from 'path'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import { router as routes } from '@/routes'
-import { router as middlewares } from '@/middlewares'
+import { router as routes } from './routes'
+import { router as middlewares } from './middlewares'
+import env from './config/environment'
 
-const corsWhitelist = ['http://localhost:8080', 'http://localhost:6060']
+export let corsWhitelist: Array<string>
+if (env.CORS_WHITELIST != 'undefined') {
+	corsWhitelist = [...['http://localhost:8080', 'http://localhost:6040'], ...env.CORS_WHITELIST.split(';')]
+} else {
+	corsWhitelist = ['http://localhost:8080', 'http://localhost:6040']
+}
 const corsOptions = {
 	origin: function (origin: any, callback: any) {
 		if (!origin || corsWhitelist.indexOf(origin) !== -1) {
@@ -16,7 +22,7 @@ const corsOptions = {
 		}
 	},
 	optionsSuccessStatus: 200,
-	credentials: true,
+	credentials: true
 }
 
 export const app = express()

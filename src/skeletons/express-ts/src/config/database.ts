@@ -1,22 +1,22 @@
 import mongoose from 'mongoose'
-import config from '@/utils/environment'
-import { Err, Succ } from '@/services/globalService'
-import db from '@/config/postgres.config'
+import env from './environment'
+import { Err, Succ } from '../services/globalService'
+import db from './sequelize.config'
 
 // MongoDB
-const dbURI: string = config.DB_URI
+const dbURI: string = env.DB_URI
 function connect() {
-	if (!config.NORK.db) {
+	if (!env.NORK.database) {
 		new Err(500, 'no database is in norkcfg.json')
 		return false
 	}
 
-	if (config.NORK.db == 'mongodb') {
+	if (env.NORK.database.orm == 'mongoose') {
 		mongoose
 			.connect(dbURI, {
 				useNewUrlParser: true,
 				useUnifiedTopology: true,
-				useCreateIndex: true,
+				useCreateIndex: true
 			})
 			.then(() => {
 				new Succ(200, 'connected to db')
@@ -28,7 +28,7 @@ function connect() {
 			})
 	}
 
-	if (config.NORK.db == 'postgresql') {
+	if (env.NORK.database.orm == 'sequelize') {
 		db.sync()
 			.then(() => {
 				new Succ(200, 'connected to db')
@@ -40,8 +40,8 @@ function connect() {
 			})
 	}
 
-	if (config.NORK.db.length > 0) {
-		new Err(500, `unsupported database ${config.NORK.db}`)
+	if (env.NORK.database.db.length > 0) {
+		new Err(500, `unsupported database ${env.NORK.database.db}`)
 		return false
 	}
 }

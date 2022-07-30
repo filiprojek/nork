@@ -1,13 +1,14 @@
 import path from 'path'
 import fs from 'fs-extra'
-import { Err } from '@/services/globalService'
+import { Err } from '../services/globalService'
 import dotenv from 'dotenv'
+const env_path = process.env.NODE_ENV ? `../.env.${process.env.NODE_ENV}` : '../.env'
 
-dotenv.config({ path: path.join(__dirname, '../.env') })
+dotenv.config({ path: path.join(__dirname, env_path) })
 const norkcfg = fs.readJSONSync(path.join(__dirname, '../../norkconfig.json'))
 
-if (norkcfg.db) {
-	if (norkcfg.db == 'postgresql') {
+if (norkcfg.database) {
+	if (norkcfg.database.db == 'postgresql') {
 		if (!process.env.DB_PORT) {
 			process.env.DB_PORT = '5432'
 		}
@@ -19,6 +20,18 @@ if (norkcfg.db) {
 			process.exit(1)
 		}
 	}
+}
+
+if (!fs.existsSync(path.join(__dirname, env_path))) {
+	console.log('$env_path = ', env_path)
+	console.log('$__dirname = ', __dirname)
+	new Err(500, `.env file for ${process.env.NODE_ENV ? process.env.NODE_ENV : ''} environment does not exists`)
+	process.exit()
+}
+
+if (process.env.JWT_SECRET === undefined || process.env.JWT_SECRET == '') {
+	new Err(500, 'JWT_SECRET is not set!')
+	process.exit()
 }
 
 export default {
@@ -36,5 +49,11 @@ export default {
 	DB_USERNAME: String(process.env.DB_USERNAME),
 	DB_PASSWORD: String(process.env.DB_PASSWORD),
 	DB_DATABASE: String(process.env.DB_DATABASE),
+	// Nork
 	NORK: norkcfg,
+	// SMTP
+	SMTP_HOST: String(process.env.SMTP_HOST),
+	SMTP_USER: String(process.env.SMTP_USER),
+	SMTP_PASS: String(process.env.SMTP_PASS),
+	SMTP_FROM: String(process.env.SMTP_FROM)
 }
